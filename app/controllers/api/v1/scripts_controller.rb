@@ -1,5 +1,6 @@
 class Api::V1::ScriptsController < ApplicationController
-  
+  # before_action :authenticate_user!
+
   def index
     scripts = Script.all
    
@@ -15,6 +16,7 @@ class Api::V1::ScriptsController < ApplicationController
    
     new_script = Script.new(script_params)
     # binding.pry
+  
     if new_script.save
       render json: new_script
     else

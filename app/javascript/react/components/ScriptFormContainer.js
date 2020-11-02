@@ -3,29 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 
 const ScriptFormContainer = () => {
-  const [getScript, setScript] = useState({})
+  const [getScript, setScript] = useState({
+    name_of_promo: "",
+    description: ""
+  })
 
 
-  useEffect(() => {
-    fetch("/api/v1/scripts.json")
-      .then(response => {
-        if (response.ok) {
-          return response
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage)
-          throw error
-        }
-      })
-      
-      .then(response => response.json())
-      //gets object array of scripts
-      .then(body => {
-        let script = body.scripts
-        setScript(script)
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`))
-  }, [])
 
   const inputChangeHandler = (event) => {
     setScript({
@@ -36,6 +19,8 @@ const ScriptFormContainer = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+
+    //goes into index page component
     fetch("/api/v1/scripts.json", {
       method: 'POST',
       body: JSON.stringify(getScript),
@@ -56,17 +41,13 @@ const ScriptFormContainer = () => {
     })
     .then(response => response.json())
     .then(body => {
-      setScript([
+      setPayload([
         ...getScript,
         body])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
     
-  
-
-
-
   return(
    
     <form onSubmit={handleSubmit}>

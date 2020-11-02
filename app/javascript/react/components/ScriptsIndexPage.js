@@ -31,17 +31,17 @@ const ScriptsIndexPage = (props) => {
           <Link to={`/scripts/${script.id}`}>
             <li>
             {script.name_of_promo} *  * {script.description}
-            
             </li>
           </Link>
-        
       </div>
     )
   })
 
   return (
     <div>
-      
+      <Link to={`/scripts/new`}>
+        <li>Click here to add a new script</li>
+      </Link>
       <ul>
         {scriptListItems}
       </ul>
