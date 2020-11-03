@@ -1,14 +1,12 @@
-import { checkPropTypes } from 'prop-types'
+
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 
-const ScriptFormContainer = () => {
+const ScriptFormContainer = (props) => {
   const [getScript, setScript] = useState({
     name_of_promo: "",
     description: ""
   })
-
-
 
   const inputChangeHandler = (event) => {
     setScript({
@@ -19,35 +17,13 @@ const ScriptFormContainer = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-
-    //goes into index page component
-    fetch("/api/v1/scripts.json", {
-      method: 'POST',
-      body: JSON.stringify(getScript),
-      credentials: "same-origin",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+    props.addNewScriptFunction(getScript)
+    setScript({
+      name_of_promo: "",
+      description: ""
     })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        const errorMessage = `${response.status} (${response.statusText})`
-        const error = new Error(errorMessage)
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      setPayload([
-        ...getScript,
-        body])
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
-    
+ 
   return(
    
     <form onSubmit={handleSubmit}>
@@ -78,10 +54,7 @@ const ScriptFormContainer = () => {
     </form>
       )
     }
-
-
-
-
+    
 export default ScriptFormContainer
 
 

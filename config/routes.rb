@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :scripts, only: [:index, :show, :create] do
-        resources :shots, only: [:create]
+        resources :shots, only: [:create, :new]
     end
   end
 end

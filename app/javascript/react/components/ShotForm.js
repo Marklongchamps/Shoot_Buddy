@@ -35,7 +35,7 @@ const ShotForm = (props) => {
           id="shot_number"
           type="number"
           onChange={handleChange}
-          value={newShot.rating}
+          value={newShot.shot_number}
         />
       </label>
       <label>
@@ -45,25 +45,25 @@ const ShotForm = (props) => {
           id="description"
           type="text"
           onChange={handleChange}
-          value={newShot.body}
+          value={newShot.description}
         />
       </label>
         Dialogue:
         <input
-          name="description"
-          id="description"
+          name="dialogue"
+          id="dialogue"
           type="text"
           onChange={handleChange}
-          value={newShot.body}
+          value={newShot.dialogue}
           />
           <label>
         Notes:
         <input
-          name="description"
-          id="description"
+          name="notes"
+          id="notes"
           type="text"
           onChange={handleChange}
-          value={newShot.body}
+          value={newShot.notes}
           />
           </label>
 
