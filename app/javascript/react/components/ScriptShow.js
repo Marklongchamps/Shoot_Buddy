@@ -4,6 +4,7 @@ import ShotForm from "./ShotForm"
 
 const ScriptShow = (props) => {
   const [board, setBoard] = useState({})
+  const [shotinfo, setShotinfo] = useState([])
   const id = props.match.params.id 
   
 
@@ -19,14 +20,15 @@ const ScriptShow = (props) => {
       }
     })
     .then(response => response.json())
-    .then(body => {debugger
+    .then(body => {
       setBoard(body.script) 
+      setShotinfo(body.script.shots)
       
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
     
   }, [])
-
+  
   const addNewBoard = (newBoardObject) => {
     
     
@@ -56,31 +58,35 @@ const ScriptShow = (props) => {
   })
   .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
-debugger
-// const showAllBoards = board.map((board) => {
-//   return (
-//     <div >
+  
+const showAllBoards = shotinfo.map((board) => {
+  
+  return (
+    <div >
       
-//           <li>
-//           {board.shot_number}
-//           {board.description}
-//           {board.dialogue}
-//           {board.notes}
-//           </li>
-//     </div>
-//     )
-//   })
+          <li>
+          <h3>SHOT NUMBER {board.shot_number}</h3>
+          <p>DESCRIPTION: {board.description}</p>
+          <p>DIALOGUE:    {board.dialogue}</p>
+          <p>NOTES:        {board.notes} </p>
+         </li>
+    </div>
+    )
+  })
 
  
 
 
   return(
     <div>
-      <h1>Greetings from Scripts Show page.  This will have all the tiles/shots from this script displayed.</h1>
+      <h2>Enter a new shot for your Spot</h2>
     
     <ShotForm addNewShotFunction={addNewBoard}
     />
-    {/* <ol>{showAllBoards}</ol> */}
+    <br></br>
+      <br></br>
+      <h2>Existing shots in your Spot</h2>
+    <ol>{showAllBoards}</ol>
   </div>
     
   )
