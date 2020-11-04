@@ -60,6 +60,7 @@ const ScriptShow = (props) => {
   }
   
 const showAllBoards = shotinfo.map((board) => {
+  
   return (
     <div >
       
