@@ -49,7 +49,8 @@ const ScriptsIndexPage = (props) => {
   })
   .then(response => response.json())
   .then(body => {
-    setScripts([...scripts, body])
+    setScripts([...scripts, body.script])
+    
     
     
     

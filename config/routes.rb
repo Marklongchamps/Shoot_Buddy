@@ -10,11 +10,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :scripts, only: [:index, :show, :create] do
-        resources :shots, only: [:create, :new]
+        resources :shots, only: [:create] do
+          resources :takes, only: [:create]
+        end
+      end
     end
   end
-end
-
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
