@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react"
 
 import ShotForm from "./ShotForm"
+import TakeForm from "./TakeForm"
 
 const ScriptShow = (props) => {
-  const [board, setBoard] = useState({})
-  const [shotinfo, setShotinfo] = useState([])
+  const [board, setBoard] = useState([])
+  
+  const [take, setTakeinfo] = useState([])
   const id = props.match.params.id 
+  
   
 
   useEffect(() => {
@@ -18,11 +21,12 @@ const ScriptShow = (props) => {
           error = new Error(errorMessage)
         throw error
       }
+
     })
     .then(response => response.json())
     .then(body => {
-      setBoard(body.script) 
-      setShotinfo(body.script.shots)
+      setBoard(body.script.shots) 
+      
       
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -30,9 +34,9 @@ const ScriptShow = (props) => {
   }, [])
   
   const addNewBoard = (newBoardObject) => {
+   
     
-    
-    fetch(`/api/v1/scripts/${id}/shots.json`, {
+    fetch(`/api/v1/scripts/${id}/shots`, {
       method: "POST",
       body: JSON.stringify(newBoardObject),
       credentials: "same-origin",
@@ -52,17 +56,51 @@ const ScriptShow = (props) => {
   })
   .then(response => response.json())
   .then(body => {
-    setBoard([...board.shots, body])
+    debugger
+    setBoard([...board, body.shot])
+    // setBoard([...board.shots, body])
     
     
   })
   .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
+
+////////
+const addNewTake = (newTakeObject) => {
+   
+  fetch(`/api/v1/scripts/${id}/shots.json`, {
+    method: "POST",
+    body: JSON.stringify(newTakeObject),
+    credentials: "same-origin",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+  })
+  .then (response => {
+  if (response.ok) {
+    return response
+  } else {
+    let errorMessage = `${response.status} (${response.statusText})`,
+      error = new Error(errorMessage)
+    throw error
+  }
+})
+.then(response => response.json())
+.then(body => {
+  setTakeinfo(take)
   
-const showAllBoards = shotinfo.map((board) => {
+  
+})
+.catch(error => console.error(`Error in fetch: ${error.message}`))
+}
+
+/////////
+ 
+const showAllBoards = board.map((board) => {
   
   return (
-    <div >
+    <div key={board.id}>
       
           <li>
           <h3>SHOT NUMBER {board.shot_number}</h3>
@@ -70,6 +108,7 @@ const showAllBoards = shotinfo.map((board) => {
           <p>DIALOGUE:    {board.dialogue}</p>
           <p>NOTES:        {board.notes} </p>
          </li>
+         <TakeForm addNewTakeFunction={addNewTake}/>
     </div>
     )
   })
@@ -87,6 +126,7 @@ const showAllBoards = shotinfo.map((board) => {
       <br></br>
       <h2>Existing shots in your Spot</h2>
     <ol>{showAllBoards}</ol>
+    
   </div>
     
   )

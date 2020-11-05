@@ -15,7 +15,7 @@ class Api::V1::ScriptsController < ApplicationController
   def create
    
     new_script = Script.new(script_params)
-    # binding.pry
+    binding.pry
   
     if new_script.save
       render json: new_script

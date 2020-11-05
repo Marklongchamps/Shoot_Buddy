@@ -5,11 +5,10 @@ class Api::V1::ShotsController < ApplicationController
     script = Script.find(params[:script_id])
     
     new_shot = Shot.new(shot_params)
-    new_shot.script_id = (params[:script_id])
-    
+    new_shot.script = script
     
     if new_shot.save
-      render json: new_shot
+      render json: new_shot, serializer: ShotSerializer 
       
     else
       render json: { errors: new_shot.errors}
