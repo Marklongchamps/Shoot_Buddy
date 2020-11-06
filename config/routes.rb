@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   get "/scripts", to: "homes#index"
   get "scripts/:id", to: "homes#index"
   get "scripts/new", to: "homes#index'"
+  get "scripts/:id/shots/:id", to: "homes#index"
 
   namespace :api do
     namespace :v1 do
       resources :scripts, only: [:index, :show, :create] do
-        resources :shots, only: [:create] do
+        resources :shots, only: [:index, :show, :create] do
           resources :takes, only: [:create]
         end
       end

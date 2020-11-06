@@ -1,4 +1,17 @@
 class Api::V1::ShotsController < ApplicationController
+  
+  def index
+    shots = Shot.all
+   
+    render json: shots
+  end
+
+  def show
+    binding.pry
+    shot = Shot.find(params[:script_id],[:shot_id])
+    render json: shot, serializer: ShotSerializer 
+  end
+
 
   def create
     
@@ -15,6 +28,7 @@ class Api::V1::ShotsController < ApplicationController
     end
   end
 
+  
 
 private
 def shot_params
