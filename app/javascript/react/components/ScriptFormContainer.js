@@ -9,6 +9,7 @@ const ScriptFormContainer = (props) => {
   })
 
   const inputChangeHandler = (event) => {
+    
     setScript({
       ...getScript,
       [event.currentTarget.name]: event.currentTarget.value
@@ -16,6 +17,7 @@ const ScriptFormContainer = (props) => {
   }
 
   const handleSubmit = (event) => {
+    debugger
     event.preventDefault()
     props.addNewScriptFunction(getScript)
     setScript({

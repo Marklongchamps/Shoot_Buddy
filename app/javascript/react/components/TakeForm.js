@@ -14,8 +14,9 @@ const TakeForm = (props) => {
   }
 
   const handleSubmit = (event) => {
+    
     event.preventDefault()
-    props.addNewTakeFunction(newtake)
+    props.addNewTake(newtake)
     setNewTake({
     take: "",
     

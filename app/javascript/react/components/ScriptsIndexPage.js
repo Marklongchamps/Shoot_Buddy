@@ -60,12 +60,12 @@ const ScriptsIndexPage = (props) => {
   }
   
   const scriptListItems = scripts.map((script) => {
-    
+   
     return (
       <div key={script.id}>
           <Link to={`/scripts/${script.id}`}>
             <li>
-            {script.name_of_promo} *  * {script.description}
+            {script.name_of_promo} *  * {script.description} ||Creation Date {(new Date (script.created_at)).toLocaleDateString()}
             </li>
           </Link>
       </div>
