@@ -7,8 +7,8 @@ class Api::V1::ShotsController < ApplicationController
   end
 
   def show
-    binding.pry
-    shot = Shot.find(params[:script_id],[:shot_id])
+    
+    shot = Shot.find(params[:id])
     render json: shot, serializer: ShotSerializer 
   end
 
