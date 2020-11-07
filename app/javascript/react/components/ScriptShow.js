@@ -69,7 +69,6 @@ const ScriptShow = (props) => {
 
 ////////
 const addNewTake = (newTakeObject) => {
-   debugger
   fetch(`/api/v1/scripts/${id}`, {
     method: "POST",
     body: JSON.stringify(newTakeObject),
@@ -100,7 +99,6 @@ const addNewTake = (newTakeObject) => {
 /////////
  
 const showAllBoards = board.map((board) => {
-  
   return ( <ShotTile 
     script_id={id}
     shot_id={board.id}

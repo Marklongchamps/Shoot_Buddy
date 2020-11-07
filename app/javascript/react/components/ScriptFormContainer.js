@@ -17,7 +17,6 @@ const ScriptFormContainer = (props) => {
   }
 
   const handleSubmit = (event) => {
-    debugger
     event.preventDefault()
     props.addNewScriptFunction(getScript)
     setScript({
