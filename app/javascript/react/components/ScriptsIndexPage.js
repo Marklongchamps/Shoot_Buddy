@@ -67,6 +67,7 @@ const ScriptsIndexPage = (props) => {
       name_of_promo={script.name_of_promo}
       description={script.description}
       created_at={script.created_at}
+      updated_at={script.updated_at}
       />
     )
   })
@@ -74,9 +75,13 @@ const ScriptsIndexPage = (props) => {
 
   return (
     <div>
+      <div id="Script tile" class="small-page-section">
       <h1>Create a New Script</h1>
       <ScriptFormContainer addNewScriptFunction={addNewScriptFunction}
       />
+      <br></br>
+      <br></br>
+      </div>
       <br></br>
       <br></br>
       <h1>My Active Scripts</h1>

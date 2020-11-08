@@ -17,7 +17,11 @@ class Api::V1::ShotsController < ApplicationController
     
     script = Script.find(params[:script_id])
     
+    shot = Shot.find(params[:shot_id])
+    
+    
     new_shot = Shot.new(shot_params)
+    
     new_shot.script = script
     
     if new_shot.save
@@ -32,7 +36,7 @@ class Api::V1::ShotsController < ApplicationController
 
 private
 def shot_params
-  params.require(:shot).permit(:shot_number, :description, :dialogue, :notes)
+  params.require(:shot).permit([:shot_number, :description, :dialogue, :notes, :image])
 end
 
 end
