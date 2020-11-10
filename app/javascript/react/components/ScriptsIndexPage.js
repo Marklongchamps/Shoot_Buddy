@@ -61,7 +61,7 @@ const ScriptsIndexPage = (props) => {
   
   }
   
-  const scriptListItems = scripts.map((script) => {
+  const scriptListItems = scripts.map((script) => {debugger
    
     return ( <ScriptTile
       script_id={script.id}

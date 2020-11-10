@@ -9,7 +9,7 @@ return(
     <Link to={`/scripts/${props.script_id}`}>
     <li>PROMO NAME: {props.name_of_promo}</li>
     </Link>
-    DESCRIPTION: {props.name_of_promo}<br></br>
+    DESCRIPTION: {props.description}<br></br>
     CREATED ON: {(new Date (props.created_at)).toLocaleDateString()}<br></br>
     LAST UPDATED: {(new Date (props.updated_at)).toLocaleString()}
     </div>

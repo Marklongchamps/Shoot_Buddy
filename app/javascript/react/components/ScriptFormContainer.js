@@ -38,7 +38,7 @@ const ScriptFormContainer = (props) => {
   // return _.isEmpty(submitErrors)
   //   }
         //
-  const handleSubmit = (event) => {debugger
+  const handleSubmit = (event) => {
     event.preventDefault()
     // if (vaildForSubmission())
     props.addNewScriptFunction(getScript)
