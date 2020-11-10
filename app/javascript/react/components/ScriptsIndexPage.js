@@ -9,6 +9,7 @@ const ScriptsIndexPage = (props) => {
   const id = props.match.params.id
  
   useEffect(() => {
+    
     fetch("/api/v1/scripts.json")
     .then (response => {
       if (response.ok) {
@@ -60,7 +61,7 @@ const ScriptsIndexPage = (props) => {
   
   }
   
-  const scriptListItems = scripts.map((script) => {
+  const scriptListItems = scripts.map((script) => {debugger
    
     return ( <ScriptTile
       script_id={script.id}

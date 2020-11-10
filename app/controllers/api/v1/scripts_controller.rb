@@ -1,10 +1,13 @@
 class Api::V1::ScriptsController < ApplicationController
   # before_action :authenticate_user!
-  
+  protect_from_forgery unless: -> { request.format.json? }
   def index
+    
     scripts = Script.all
+    
    
     render json: scripts
+    # binding.pry
   end
   
   def show
@@ -27,7 +30,7 @@ end
 
 private
     def script_params
-      params.require(:script).permit([:name_of_promo, :description])
+      params.require(:script).permit(:name_of_promo, :description, :story_board_photo)
     end
 
 

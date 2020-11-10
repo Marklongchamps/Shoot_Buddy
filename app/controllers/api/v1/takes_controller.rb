@@ -7,10 +7,6 @@ class Api::V1::TakesController < ApplicationController
     render json: take, serializer: TakeSerializer 
   end
 
-
-
-
-
   def create
     
     shot = Shot.find(params[:shot_id])

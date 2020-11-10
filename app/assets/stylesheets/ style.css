@@ -9,4 +9,17 @@ nav.top-bar{
 .small-page-section {
   border: 2px solid #000000;
   box-shadow: 10px 10px 5px #ccc;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.shot-page-section {
+  border: 2px solid #000000;
+  box-shadow: 10px 10px 5px #ccc;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
 }

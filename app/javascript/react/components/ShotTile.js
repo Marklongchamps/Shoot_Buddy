@@ -8,9 +8,9 @@ const ShotTile = (props) =>{
   
   return(
     <div>
-      <div  id="Script tile" class="small-page-section">
+      <div  id="Script tile" class="shot-page-section">
         <Link to={`/scripts/${props.script_id}/shots/${props.shot_id}`}>
-        <li>SHOT NUMBER: {props.shot_number}</li>
+        <h4>SHOT NUMBER: {props.shot_number}</h4>
         </Link>
         <li>DESCRIPTION:{props.description}</li>
         <li>DIALOGUE: {props.dialogue}</li>

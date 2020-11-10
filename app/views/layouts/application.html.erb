@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ShootBuddy</title>
+  
+</div>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+<title>ShootBuddy</title>
+
   <nav class="top-bar">
     <h1><a href="/">Shoot Buddy</a></h1>
+    <img src="images/clapper.png" alt="clapper" />
+    
 
     <section class="top-bar-section">
-      <ul class="right">
+      <ul class="right>"
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
@@ -22,7 +26,9 @@
       </ul>
     </section>
   </nav>
-
+  <br></br>
+  <div class="grid-container">
+  <%= yield %>
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
       <%= value %>
