@@ -26,8 +26,6 @@ const SingleShot = (props) => {
         
         setShot([...shot, body.shot])
 
-
-        
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
       

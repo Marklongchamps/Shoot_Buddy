@@ -14,7 +14,7 @@ class Api::V1::ShotsController < ApplicationController
   end
 
   def create
-    binding.pry
+    
     script = Script.find(params[:script_id])
     
     new_shot = Shot.new(shot_params)

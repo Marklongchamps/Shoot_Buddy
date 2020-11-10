@@ -58,7 +58,6 @@ const ScriptShow = (props) => {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       setBoard([...board, body.shot])
       
     })
