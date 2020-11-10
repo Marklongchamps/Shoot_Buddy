@@ -9,6 +9,7 @@ const ScriptsIndexPage = (props) => {
   const id = props.match.params.id
  
   useEffect(() => {
+    
     fetch("/api/v1/scripts.json")
     .then (response => {
       if (response.ok) {

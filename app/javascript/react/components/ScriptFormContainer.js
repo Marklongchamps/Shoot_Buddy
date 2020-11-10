@@ -1,8 +1,10 @@
 
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
+import _ from 'lodash'
 
 const ScriptFormContainer = (props) => {
+  const [errors, setErrors] = useState({})
   const [getScript, setScript] = useState({
     name_of_promo: "",
     description: ""
@@ -16,14 +18,39 @@ const ScriptFormContainer = (props) => {
     })
   }
 
-  const handleSubmit = (event) => {
+
+
+  //
+  // const vaildForSubmission = () => {
+  //   let submitErrors = {}
+  //   if (getScript.name_of_promo.trim() !=="") {
+  //     return true
+  //       } else { 
+  //         setErrors({
+  //           ...errors, name_of_promo: "can not be blank"
+  //         }) 
+  //     return false
+  
+  //       }
+  //     }
+    
+  //     setErrors(submitErrors)
+  // return _.isEmpty(submitErrors)
+  //   }
+        //
+  const handleSubmit = (event) => {debugger
     event.preventDefault()
+    // if (vaildForSubmission())
     props.addNewScriptFunction(getScript)
     setScript({
       name_of_promo: "",
       description: ""
     })
   }
+
+
+  
+  
  
   return(
    

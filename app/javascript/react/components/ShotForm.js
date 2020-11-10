@@ -4,16 +4,18 @@ import Dropzone from "react-dropzone"
   const ShotForm = (props) => {
     
     const id = props.script_id
+    const scriptName = props.scriptName[0]
     
     const [newShot, setNewShot] = useState({
     shot_number: "",
     description: "",
     dialogue: "",
     notes: "",
-    image: ""
+    story_board_photo: ""
   })
 
   const handleChange = (event) => {
+    
     setNewShot({
       ...newShot,
       [event.currentTarget.name]: event.currentTarget.value
@@ -23,40 +25,28 @@ import Dropzone from "react-dropzone"
   const handleFileUpload = (acceptedFiles) => {
     setNewShot({
       ...newShot,
-      image: acceptedFiles[0]
+      story_board_photo: acceptedFiles[0]
     })
   }
 
   const handleSubmit = (event) => {
     
+    
     event.preventDefault()
     let completeshot = new FormData()
-    completeshot.append("Shot Number",newShot.shot_number)
-    completeshot.append("Description",newShot.description)
-    completeshot.append("Dialogue",newShot.dialogue)
-    completeshot.append("Notes",newShot.notes)
-    completeshot.append("Photo",newShot.image)
-
-      fetch(`/api/v1/scripts/${id}/shot`, {
-            method: "POST",
-            body: completeshot,
-            credentials: "same-origin",
-            
-          })
-          .then (response => {
-          if (response.ok) {
-            return response
-          } else {
-            let errorMessage = `${response.status} (${response.statusText})`,
-              error = new Error(errorMessage)
-            throw error
-          }
-        })
-        
-      }
+    completeshot.append("shot_number",newShot.shot_number)
+    completeshot.append("description",newShot.description)
+    completeshot.append("dialogue",newShot.dialogue)
+    completeshot.append("notes",newShot.notes)
+    completeshot.append("story_board_photo",newShot.story_board_photo)
     
+    props.addNewShotFunction(completeshot)
+  }
+
   return (
+    
     <form onSubmit={handleSubmit}>
+      <h3>Current Script is {scriptName}</h3>
       <label>
         Shot Number:
         <input
@@ -133,50 +123,80 @@ export default ShotForm
 
 
 
+
+
+
+
 // import React, { useState, useEffect } from "react"
 // import Dropzone from "react-dropzone"
 
-// const ShotForm = (props) => {
-//   const [newBoardPhoto, setBoardPhoto] = useState({
-//     name: "",
-//     image: ""
-//   })
-
-//   const [newShot, setNewShot] = useState({
+//   const ShotForm = (props) => {
+    
+//     const id = props.script_id
+//     const scriptName = props.scriptName[0]
+    
+//     const [newShot, setNewShot] = useState({
 //     shot_number: "",
 //     description: "",
 //     dialogue: "",
-//     notes: ""
+//     notes: "",
+//     story_board_photo: ""
 //   })
 
 //   const handleChange = (event) => {
+    
 //     setNewShot({
 //       ...newShot,
 //       [event.currentTarget.name]: event.currentTarget.value
 //     })
 //   }
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault()
-//     props.addNewShotFunction(newShot)
-//     setNewShot({
-//     shot_number: "",
-//     description: "",
-//     dialogue: "",
-//     notes: ""
-//     })
-//   }
 //   const handleFileUpload = (acceptedFiles) => {
-//     setBoardPhoto({
-//       ...newBoardPhoto,
+//     setNewShot({
+//       ...newShot,
 //       image: acceptedFiles[0]
 //     })
 //   }
 
+//   const handleSubmit = (event) => {
+    
+//     event.preventDefault()
+//     let completeshot = new FormData()
+//     completeshot.append("shot_number",newShot.shot_number)
+//     completeshot.append("description",newShot.description)
+//     completeshot.append("dialogue",newShot.dialogue)
+//     completeshot.append("notes",newShot.notes)
+//     completeshot.append("story_board_photo",newShot.story_board_photo)
+
+//       fetch(`/api/v1/scripts/${id}/shots`, {
+//             method: "POST",
+//             body: completeshot,
+//             credentials: "same-origin",
+//             headers: {
+//               'Accept': 'application/json',
+//               'Accept': 'image/jpeg'
+//         }
+        
+            
+//           })
+//           .then (response => {
+//           if (response.ok) {
+//             return response
+//           } else {
+//             let errorMessage = `${response.status} (${response.statusText})`,
+//               error = new Error(errorMessage)
+//             throw error
+//           }
+//         })
+        
+//       }
+    
 //   return (
+    
 //     <form onSubmit={handleSubmit}>
+//       <h3>Current Script is {scriptName}</h3>
 //       <label>
-//         Shot Number
+//         Shot Number:
 //         <input
 //           name="shot_number"
 //           id="shot_number"
@@ -220,7 +240,7 @@ export default ShotForm
 //     <section>
 //     <div {...getRootProps()}>
 //     <input {...getInputProps()} />
-//     <p>CLICK HERE TO ADD A STORY BOARD SHOT TO THE SHOT</p>
+//     <button type="button" class="learn more button">CLICK HERE TO ADD A STORY BOARD SHOT TO THE SHOT</button>
 //     </div>
 //     </section>
 //     )}
@@ -231,20 +251,14 @@ export default ShotForm
 //       </div>
 //     </form>
 
-
-
-
 //     )
   
 // }
 
-
-
-
-
-
-
 // export default ShotForm
+
+
+
 
 
 

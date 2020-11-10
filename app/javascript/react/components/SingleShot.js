@@ -22,7 +22,7 @@ const SingleShot = (props) => {
   
       })
       .then(response => response.json())
-      .then(body => {
+      .then(body => {debugger
         
         setShot([...shot, body.shot])
 
@@ -34,7 +34,7 @@ const SingleShot = (props) => {
     }, [])
     ///add new take to database
     const addNewTakeFunction = (newTakeObject) => {
-debugger
+
      fetch(`/api/v1${path}/takes`, {
       
       method: "POST",
@@ -56,7 +56,7 @@ debugger
     })
     .then(response => response.json())
   .then(body => {
-    debugger
+    
     setTakeinfo([...take, body.shot.takes])
     
   })
@@ -73,6 +73,7 @@ debugger
         description={board.description}
         dialogue={board.dialogue}
         notes={board.notes} 
+        story_board_photo={board.story_board_photo.url}
        
       />
        

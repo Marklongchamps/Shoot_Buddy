@@ -1,5 +1,6 @@
 class Api::V1::ShotsController < ApplicationController
-  
+   protect_from_forgery unless: -> { request.format.json? }
+   skip_before_action :verify_authenticity_token, :only => :create
   def index
     shots = Shot.all
    
@@ -12,13 +13,9 @@ class Api::V1::ShotsController < ApplicationController
     render json: shot, serializer: ShotSerializer 
   end
 
-
   def create
-    
+    binding.pry
     script = Script.find(params[:script_id])
-    
-    shot = Shot.find(params[:shot_id])
-    
     
     new_shot = Shot.new(shot_params)
     
@@ -32,11 +29,9 @@ class Api::V1::ShotsController < ApplicationController
     end
   end
 
-  
-
-private
-def shot_params
-  params.require(:shot).permit([:shot_number, :description, :dialogue, :notes, :image])
-end
+  private
+  def shot_params
+    params.permit(:shot_number, :description, :dialogue, :notes, :story_board_photo, :script_id, :photo)
+  end
 
 end
