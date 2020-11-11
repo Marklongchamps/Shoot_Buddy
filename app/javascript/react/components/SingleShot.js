@@ -22,7 +22,7 @@ const SingleShot = (props) => {
   
       })
       .then(response => response.json())
-      .then(body => {debugger
+      .then(body => {
         
         setShot([...shot, body.shot])
 

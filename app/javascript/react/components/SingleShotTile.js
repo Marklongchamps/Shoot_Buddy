@@ -4,7 +4,7 @@ import TakeForm from "./TakeForm"
 
 
 
-const SingleShotTile = (props) =>{debugger
+const SingleShotTile = (props) =>{
   let poster 
     if(props.story_board_photo){
       if(props.story_board_photo.url !==null){
