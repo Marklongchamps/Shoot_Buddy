@@ -39,7 +39,7 @@ import Dropzone from "react-dropzone"
     completeshot.append("dialogue",newShot.dialogue)
     completeshot.append("notes",newShot.notes)
     completeshot.append("story_board_photo",newShot.story_board_photo)
-    
+    //sends data vaiprops to the scriptshow page
     props.addNewShotFunction(completeshot)
   }
 
@@ -92,7 +92,7 @@ import Dropzone from "react-dropzone"
     <section>
     <div {...getRootProps()}>
     <input {...getInputProps()} />
-    <button type="button" class="learn more button">CLICK HERE TO ADD A STORY BOARD SHOT TO THE SHOT</button>
+    <button type="button" className="learn more button">CLICK HERE TO ADD A STORY BOARD SHOT TO THE SHOT</button>
     </div>
     </section>
     )}

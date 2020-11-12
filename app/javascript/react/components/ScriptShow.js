@@ -23,6 +23,7 @@ const ScriptShow = (props) => {
       }
 
     })
+    //body.scripts.shots is an array of all shots associated wtih this scirpt
     .then(response => response.json())
     .then(body => {
 
@@ -35,7 +36,7 @@ const ScriptShow = (props) => {
   }, [])
 
 
-  //this isthenew part
+  //this isthenew part  addNewShot is theFOrmData from other page
   const addNewShotFunction = (addNewShot) => {
 
     fetch(`/api/v1/scripts/${id}/shots`, {
@@ -48,6 +49,7 @@ const ScriptShow = (props) => {
       } 
     })
     .then (response => {
+     
     if (response.ok) {
       return response
     } else {
@@ -56,6 +58,7 @@ const ScriptShow = (props) => {
     throw error
       }
     })
+    //open up board which is an array of all the SHOTS. body.shot which is new shot object has new shot info in it.  Now we open up board (whihch is array of shot objects) and enter in our object via spread operator.  also resets the state so we can see the new shot immediately body is the new object wer are inserting with all new shot data.
     .then(response => response.json())
     .then(body => {
       setBoard([...board, body.shot])
@@ -66,7 +69,7 @@ const ScriptShow = (props) => {
 
 
   ///end of new part
-  
+  //this sends data to shottile to make map of all new shots
   const showAllBoards = board.map((board) => {
     return ( <ShotTile
       script_id={id}
@@ -75,14 +78,15 @@ const ScriptShow = (props) => {
       description={board.description}
       dialogue={board.dialogue}
       notes={board.notes} 
+      story_board={board.story_board_photo}
     
     />
     )
   })
-
+//show all boards below prints out all boards
   return(
      <div>
-        <div id="Script tile" class="small-page-section"> 
+        <div id="Script tile" className="small-page-section"> 
         
           <h2>Enter a new shot for your Spot</h2>
           
@@ -97,7 +101,7 @@ const ScriptShow = (props) => {
         <br></br>
         <h2>Existing shots in your Spot</h2>
         <div>
-      
+        
         {showAllBoards} 
   
         </div>
