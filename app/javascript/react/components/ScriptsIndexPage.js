@@ -76,7 +76,7 @@ const ScriptsIndexPage = (props) => {
 
   return (
     <div>
-      <div id="Script tile" class="small-page-section">
+      <div id="Script tile" className="small-page-section">
       <h1>Create a New Script</h1>
       <ScriptFormContainer addNewScriptFunction={addNewScriptFunction}
       />

@@ -5,7 +5,7 @@ const ScriptTile = (props) => {
 
 return(
   <div>
-  <div id="Script tile" class="small-page-section">
+  <div id="Script tile" className="small-page-section">
     <Link to={`/scripts/${props.script_id}`}>
     <li>PROMO NAME: {props.name_of_promo}</li>
     </Link>

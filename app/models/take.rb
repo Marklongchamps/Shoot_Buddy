@@ -1,4 +1,4 @@
 class Take < ApplicationRecord
-  belongs_to :shots
+  belongs_to :shot
 
 end

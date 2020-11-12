@@ -14,13 +14,13 @@ class Api::V1::ShotsController < ApplicationController
   end
 
   def create
-    
+   
     script = Script.find(params[:script_id])
     
     new_shot = Shot.new(shot_params)
-    
+  
     new_shot.script = script
-    
+    # binding.pry
     if new_shot.save
       render json: new_shot, serializer: ShotSerializer 
       

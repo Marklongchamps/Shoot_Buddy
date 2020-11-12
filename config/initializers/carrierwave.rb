@@ -2,8 +2,8 @@ CarrierWave.configure do |config|
   if !Rails.env.test?
     config.fog_credentials = {
       provider: "AWS",
-      aws_access_key_id: ENV["AKIAYALLUHXACVI3Q5XM"],
-      aws_secret_access_key: ENV["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"]
+      aws_access_key_id: ENV["AWS_ACCESS_KEY_ID"],
+      aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
     }
     config.fog_directory  = ENV["S3_BUCKET"]
   end
