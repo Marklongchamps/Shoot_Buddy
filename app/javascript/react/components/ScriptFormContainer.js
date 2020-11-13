@@ -1,7 +1,8 @@
 
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import _ from 'lodash'
+import _ from "lodash"
+import ErrorList from "./ErrorList"
 
 const ScriptFormContainer = (props) => {
   const [errors, setErrors] = useState({})
@@ -21,31 +22,30 @@ const ScriptFormContainer = (props) => {
 
 
   //
-  // const vaildForSubmission = () => {
-  //   let submitErrors = {}
-  //   if (getScript.name_of_promo.trim() !=="") {
-  //     return true
-  //       } else { 
-  //         setErrors({
-  //           ...errors, name_of_promo: "can not be blank"
-  //         }) 
-  //     return false
-  
-  //       }
-  //     }
+  const vaildForSubmission = () => {
+    let submitErrors = {}
+    const requiredFields = ["name_of_promo", "description"]
+    requiredFields.forEach(field => {debugger
+    if (getScript[field].trim() ==="") {
+      submitErrors = {
+            ...submitErrors, [field]: "can not be blank"
+        }
+      }
+    })
     
-  //     setErrors(submitErrors)
-  // return _.isEmpty(submitErrors)
-  //   }
+      setErrors(submitErrors)
+      return _.isEmpty(submitErrors)
+    }
         //
   const handleSubmit = (event) => {
     event.preventDefault()
-    // if (vaildForSubmission())
-    props.addNewScriptFunction(getScript)
-    setScript({
-      name_of_promo: "",
-      description: ""
-    })
+      if (vaildForSubmission()) {
+      props.addNewScriptFunction(getScript)
+      setScript({
+        name_of_promo: "",
+        description: ""
+      })
+    }
   }
 
 
@@ -54,7 +54,8 @@ const ScriptFormContainer = (props) => {
  
   return(
    
-    <form onSubmit={handleSubmit}>
+    <form className="callout"onSubmit={handleSubmit}>
+      <ErrorList errors={errors} />
       <label>
         Name Of Promo
           <input
