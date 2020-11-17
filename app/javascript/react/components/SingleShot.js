@@ -93,13 +93,17 @@ const SingleShot = (props) => {
     const showAllTakes = take.map((singletake) => {
   
       return ( <AllTakesTile
-        
+        takeid={singletake.id}
         take={singletake.take}
+        pathScriptandShot={path}
+        alltest={singletake}
        
       />
      
       )
     })
+
+    
 
 
 
