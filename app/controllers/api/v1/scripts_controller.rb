@@ -16,6 +16,29 @@ class Api::V1::ScriptsController < ApplicationController
     render json: script, serializer: ScriptSerializer 
   end
 
+  def destroy
+    script = Script.find(params[:id])
+      if script.destroy
+        render json: {destroyed: true}
+      end
+    end
+
+    def edit
+      render json: Script.find(params[:id]),
+      serializer: ScriptSerializer
+    end
+
+
+  def update
+    script = Script.find(params[:id])
+  
+    if script.update(script_params)
+      render json: script
+    else
+      render json: { errors: script.errors.full_messages }
+    end
+  end
+
   def create
    
     new_script = Script.new(script_params)
