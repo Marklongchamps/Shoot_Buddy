@@ -22,7 +22,7 @@ class Api::V1::ShotsController < ApplicationController
   def update
     
     shot = Shot.find(params[:id])
-
+binding.pry
       if shot.update(shot_params)
         render json: shot
       else render json: { errors: script.errors.full_messages }
@@ -33,6 +33,7 @@ class Api::V1::ShotsController < ApplicationController
     script = Script.find(params[:script_id])
     new_shot = Shot.new(shot_params)
     new_shot.script = script
+    binding.pry
     if new_shot.save
       render json: new_shot, serializer: ShotSerializer  
     else
@@ -51,6 +52,6 @@ end
 
   private
     def shot_params
-    params.permit(:shot_number, :description, :dialogue, :notes, :story_board_photo, :script_id, :photo)
+    params.permit(:shot_number, :description, :dialogue, :notes, :story_board_photo, :script_id, :photo, :shot)
     end
 end
