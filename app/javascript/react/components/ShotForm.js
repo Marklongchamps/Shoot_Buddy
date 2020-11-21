@@ -29,7 +29,7 @@ import Dropzone from "react-dropzone"
     })
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => {debugger
     
     
     event.preventDefault()
@@ -40,6 +40,7 @@ import Dropzone from "react-dropzone"
     completeshot.append("notes",newShot.notes)
     completeshot.append("story_board_photo",newShot.story_board_photo)
     //sends data vaiprops to the scriptshow page
+    debugger
     props.addNewShotFunction(completeshot)
   }
 

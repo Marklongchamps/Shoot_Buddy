@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Redirect } from "react-router-dom"
 
-const DestroyShot = (props) => {debugger
+const DestroyShot = (props) => {
   const [currentShot, setCurrentShot] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [longPath, setlongPath] = useState(props.location.pathname)
   let the_url = props.location.pathname
   
-  useEffect(() => {debugger
+  useEffect(() => {
    ///fixes url to get shot
    function RemoveLastDirectoryPartOf(the_url) {
     var the_arr = the_url.split('/');
@@ -33,7 +33,7 @@ const DestroyShot = (props) => {debugger
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, []);
 
-    const onClickDelete = event => {debugger
+    const onClickDelete = event => {
       event.preventDefault()
 
       ///fixes url to get shot
@@ -87,7 +87,7 @@ const DestroyShot = (props) => {debugger
   
 
 
-      if (shouldRedirect) {debugger
+      if (shouldRedirect) {
         return <Redirect to={redir} />
       }
     

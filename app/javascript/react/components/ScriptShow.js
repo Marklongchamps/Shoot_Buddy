@@ -37,7 +37,7 @@ const ScriptShow = (props) => {
 
 
   //this isthenew part  addNewShot is theFOrmData from other page
-  const addNewShotFunction = (addNewShot) => {
+  const addNewShotFunction = (addNewShot) => {debugger
 
     fetch(`/api/v1/scripts/${id}/shots`, {
       method: "POST",
