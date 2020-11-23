@@ -50,7 +50,7 @@ useEffect(() => {
   .catch(error => console.error(`Error in fetch: ${error.message}`))
 }, []);
 
-const updateShot =(formData) => {debugger
+const updateShot = (formData) => {
 
   let the_url = props.location.pathname
   ///fixes url to get shot
@@ -63,11 +63,11 @@ const updateShot =(formData) => {debugger
   
   fetch(`/api/v1${newurl}`, {
     method: 'PATCH',
-    body: JSON.stringify(formData),
+    body: formData,
     credentials: 'same-origin',
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
+    headers: {
+      'Accept': 'application/json',
+      'Accept': 'image/jpeg'
       }
     })
     .then(response => {
@@ -130,8 +130,8 @@ const updateShot =(formData) => {debugger
     completeshot.append("story_board_photo",updatedShot.story_board_photo)
     //sends data vaiprops to the scriptshow page
     // props.addNewShotFunction(completeshot)
-    debugger
-    updateShot(updatedShot)
+    
+    updateShot(completeshot)
   }
 
 if (shouldRedirect) {debugger
