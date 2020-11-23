@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
-import Dropzone from "react-dropzone"
+import Timer from "./Timer"
 
 const TakeForm = (props) => {
 
   const [newtake, setNewTake] = useState({
     take: "",
+    time:""
     })
 
   const handleChange = (event) => {
@@ -32,8 +33,14 @@ const TakeForm = (props) => {
           onChange={handleChange}
           value={newtake.take}
         />
-      
-          </label>
+        </label>
+        
+        <label>
+          
+          
+        <Timer/>
+        
+        </label>
 
       <div>
         <input type="submit" value="Enter New Take" />

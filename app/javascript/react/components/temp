@@ -1,62 +1,71 @@
-import React, { useState, useEffect } from "react"
-import Dropzone from "react-dropzone"
+  
+  fetch(`/api/v1${newurl}`, {
+    method: 'PATCH',
+    body: JSON.stringify(formData),
+    credentials: 'same-origin',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {debugger
+      if (body.errors) {
+        SetErrors(body.errors)
+      } else {
+        setShouldRedirect(body.shot.script.id)
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  };
 
-  const ShotForm = (props) => {
-    
-    const id = props.script_id
-    
-    const [newShot, setNewShot] = useState({
-    shot_number: "",
-    description: "",
-    dialogue: "",
-    notes: "",
-    image: ""
-  })
-
-  const handleChange = (event) => {
-    setNewShot({
-      ...newShot,
+  const handleChange = event => {
+    setUpdatedShot({
+      ...updatedShot,
       [event.currentTarget.name]: event.currentTarget.value
     })
   }
 
   const handleFileUpload = (acceptedFiles) => {
-    setNewShot({
-      ...newShot,
-      image: acceptedFiles[0]
+    setUpdatedShot({
+      ...updatedShot,
+      story_board_photo: acceptedFiles[0]
     })
   }
 
+
+
   const handleSubmit = (event) => {
-    
     event.preventDefault()
     let completeshot = new FormData()
-    completeshot.append("Shot Number",newShot.shot_number)
-    completeshot.append("Description",newShot.description)
-    completeshot.append("Dialogue",newShot.dialogue)
-    completeshot.append("Notes",newShot.notes)
-    completeshot.append("Photo",newShot.image)
+    completeshot.append("shot_number",updatedShot.shot_number)
+    completeshot.append("description",updatedShot.description)
+    completeshot.append("dialogue",updatedShot.dialogue)
+    completeshot.append("notes",updatedShot.notes)
+    completeshot.append("story_board_photo",updatedShot.story_board_photo)
+    //sends data vaiprops to the scriptshow page
+    // props.addNewShotFunction(completeshot)
+    debugger
+    updateShot(updatedShot)
+  }
 
-      fetch(`/api/v1/scripts/${id}/shot`, {
-            method: "POST",
-            body: completeshot,
-            credentials: "same-origin",
-            
-          })
-          .then (response => {
-          if (response.ok) {
-            return response
-          } else {
-            let errorMessage = `${response.status} (${response.statusText})`,
-              error = new Error(errorMessage)
-            throw error
-          }
-        })
-        
-      }
-    
+if (shouldRedirect) {debugger
+  return <Redirect to={`/scripts/${shouldRedirect}`} />
+}
+
   return (
+    
     <form onSubmit={handleSubmit}>
+      <h2>SHOT DATA EDITOR</h2>
       <label>
         Shot Number:
         <input
@@ -64,7 +73,7 @@ import Dropzone from "react-dropzone"
           id="shot_number"
           type="number"
           onChange={handleChange}
-          value={newShot.shot_number}
+          value={updatedShot.shot_number}
         />
       </label>
       <label>
@@ -74,7 +83,7 @@ import Dropzone from "react-dropzone"
           id="description"
           type="text"
           onChange={handleChange}
-          value={newShot.description}
+          value={updatedShot.description}
         />
       </label>
         Dialogue:
@@ -83,7 +92,7 @@ import Dropzone from "react-dropzone"
           id="dialogue"
           type="text"
           onChange={handleChange}
-          value={newShot.dialogue}
+          value={updatedShot.dialogue}
           />
           <label>
         Notes:
@@ -92,7 +101,7 @@ import Dropzone from "react-dropzone"
           id="notes"
           type="text"
           onChange={handleChange}
-          value={newShot.notes}
+          value={updatedShot.notes}
           />
           </label>
           
@@ -102,7 +111,7 @@ import Dropzone from "react-dropzone"
     <section>
     <div {...getRootProps()}>
     <input {...getInputProps()} />
-    <button type="button" class="learn more button">CLICK HERE TO ADD A STORY BOARD SHOT TO THE SHOT</button>
+    <button type="button" className="learn more button">CLICK HERE TO REPLACE OR ADD A STORYBOARD</button>
     </div>
     </section>
     )}
@@ -112,9 +121,3 @@ import Dropzone from "react-dropzone"
         <input type="submit" value="Submit" />
       </div>
     </form>
-
-    )
-  
-}
-
-export default ShotForm

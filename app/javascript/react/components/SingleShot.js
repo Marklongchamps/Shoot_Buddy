@@ -4,6 +4,7 @@ import SingleShotTile from "./SingleShotTile"
 import TakeForm from "./TakeForm"
 import AllTakesTile from "./AllTakesTile"
 
+
 const SingleShot = (props) => {
  
     const [shot, setShot] = useState([])
@@ -102,10 +103,6 @@ const SingleShot = (props) => {
      
       )
     })
-
-    
-
-
 
     return(
       <div>
