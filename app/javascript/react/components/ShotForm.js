@@ -40,7 +40,6 @@ import Dropzone from "react-dropzone"
     completeshot.append("notes",newShot.notes)
     completeshot.append("story_board_photo",newShot.story_board_photo)
     //sends data vaiprops to the scriptshow page
-    debugger
     props.addNewShotFunction(completeshot)
   }
 
