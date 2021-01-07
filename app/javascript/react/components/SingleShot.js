@@ -98,6 +98,7 @@ const SingleShot = (props) => {
         take={singletake.take}
         pathScriptandShot={path}
         alltest={singletake}
+        time={singletake.time}
        
       />
      

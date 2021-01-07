@@ -60,7 +60,7 @@ const ScriptShow = (props) => {
     })
     //open up board which is an array of all the SHOTS. body.shot which is new shot object has new shot info in it.  Now we open up board (whihch is array of shot objects) and enter in our object via spread operator.  also resets the state so we can see the new shot immediately body is the new object wer are inserting with all new shot data.
     .then(response => response.json())
-    .then(body => {
+    .then(body => {debugger
       setBoard([...board, body.shot])
       
     })

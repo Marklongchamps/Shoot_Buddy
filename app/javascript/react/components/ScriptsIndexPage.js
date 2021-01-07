@@ -21,7 +21,7 @@ const ScriptsIndexPage = (props) => {
       }
     })
     .then(response => response.json())
-    .then(body => {
+    .then(body => {debugger
       setScripts(body.scripts) 
       
     })

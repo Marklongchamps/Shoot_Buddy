@@ -33,7 +33,7 @@ binding.pry
     script = Script.find(params[:script_id])
     new_shot = Shot.new(shot_params)
     new_shot.script = script
-    binding.pry
+    # binding.pry
     if new_shot.save
       render json: new_shot, serializer: ShotSerializer  
     else

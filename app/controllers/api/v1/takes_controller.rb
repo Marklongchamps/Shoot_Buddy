@@ -46,9 +46,10 @@ class Api::V1::TakesController < ApplicationController
     
     new_take = Take.new()
     new_take.take = params["take"]
+    new_take.time = params["time"]
     
     new_take.shot_id = shot.id
-    
+    # binding.pry
     if new_take.save!
       render json: new_take, serializer: TakeSerializer
     
@@ -61,7 +62,7 @@ end
 
 private
     def take_params
-      params.permit(:take, :shot_id,  :format)
+      params.permit(:take, :shot_id,  :format, :time)
     end
  end
 #took out script_id may mess up adding new take

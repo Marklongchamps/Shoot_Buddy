@@ -1,5 +1,5 @@
 class TakeSerializer < ActiveModel::Serializer
-  attributes :id, :take
+  attributes :id, :take, :time
 
   belongs_to :shot
 end
