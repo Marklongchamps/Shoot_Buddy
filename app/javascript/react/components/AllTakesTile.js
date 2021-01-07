@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 
 
 
-const AllTakesTile = (props) =>{
+const AllTakesTile = (props) =>{debugger
   
   
   return(
     <div>
          <div id="Script tile" className="shot-page-section">
           <li>take: {props.take}</li>
+          <li>time: {props.time}</li>
+
           <br></br>
           <Link to={`${props.pathScriptandShot}/takes/${props.takeid}/destroy`}>
           <button type="button" className="button alert">Delete Take</button>

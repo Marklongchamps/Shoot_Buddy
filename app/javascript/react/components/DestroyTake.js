@@ -84,7 +84,10 @@ const DestroyTake = (props) => {
   let redir = RemoveLastDirectoryPartOf(the_url)
 
 ///fixes url to get Take change line in fetch to pull clenaed u
-  
+const onClickCancel = event => {
+  event.preventDefault()
+  setShouldRedirect(true)
+}
 
 
       if (shouldRedirect) {
@@ -95,7 +98,8 @@ const DestroyTake = (props) => {
         <div className='grid-container wrapper'>
           <h4>Are you sure you want to delete?  This CAN NOT be undone and you will lose the take.  {currentTake.name}</h4>
           <div className='button-group'>
-              <input onClick={onClickDelete} className='button' type='submit' value='Delete Take' />
+              <input onClick={onClickDelete} className='button alert' type='submit' value='Delete Take' />
+              <input onClick={onClickCancel} className='button' type='button' value='Cancel' />
             </div>
         </div>
       )

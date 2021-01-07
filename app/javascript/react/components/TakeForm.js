@@ -5,8 +5,9 @@ const TakeForm = (props) => {
 
   const [newtake, setNewTake] = useState({
     take: "",
-    time:""
+    time: ""
     })
+
     const [timer, setTimer] = useState(0)
     const [isActive, setIsActive] = useState(false)
     const [isPaused, setIsPaused] = useState(false)
@@ -21,7 +22,6 @@ const TakeForm = (props) => {
       }, 10)
       }
     
-  
     const handlePause = () => {
       clearInterval(countRef.current)
       setIsPaused(false)
@@ -41,41 +41,32 @@ const TakeForm = (props) => {
      setTimer(0)
     }
     
-
     const formatTime = () =>{
     
       const getMiliSeconds = `${("0" + ((timer / 10) % 100))}`.slice(-2)
       const getSeconds = `${("0" + Math.floor((timer / 1000) % 60))}`.slice(-2)
-     
       const getMinutes = `${("0" + Math.floor((timer / 60000) % 60))}`.slice(-2)
 
       let currentTime = `${getMinutes} : ${getSeconds} : ${getMiliSeconds}`
       
-      
-
     return currentTime
     }
 
-  
-////////////////
   const handleChange = (event) => {
     setNewTake({
       ...newtake,
       [event.currentTarget.name]: event.currentTarget.value
     })
   }
+  
 
   const handleSubmit = (event) => {
-    
     event.preventDefault()
-    
-    props.addNewTakeFunction(newtake)
-    
-    
+     props.addNewTakeFunction(newtake)
     
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="callout" onSubmit={handleSubmit}>
       <label>
         Take
         <input
@@ -93,7 +84,7 @@ const TakeForm = (props) => {
           id="time"
           type="text"
           onChange={handleChange}
-          value={formatTime()}
+          value={newtake.time=formatTime(timer)}
         />
         </label>
 
@@ -101,10 +92,6 @@ const TakeForm = (props) => {
         <input type="submit" value="Enter New Take" />
       </div>
 
-
-
-        
-        
         <div className="app">
         <h3>Take Timer</h3>
         <div className='stopwatch-card'>
@@ -124,159 +111,12 @@ const TakeForm = (props) => {
           </div>
         </div>
       </div>
-        
-        
-       
-
-      
-      
+     
     </form>
-
-
-
-
-
 
    
   )
 }
 
-
-
-
 export default TakeForm
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState, useEffect } from "react"
-// import Timer from "./Timer"
-
-// const TakeForm = (props) => {
-
-//   const [newtake, setNewTake] = useState({
-//     take: "",
-//     time:""
-//     })
-
-  
-
-//   const handleChange = (event) => {
-//     setNewTake({
-//       ...newtake,
-//       [event.currentTarget.name]: event.currentTarget.value
-//     })
-//   }
-
-//   const handleSubmit = (event) => {
-    
-//     event.preventDefault()
-    
-//     props.addNewTakeFunction(newtake)
-    
-    
-    
-//   }
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <label>
-//         Take
-//         <input
-//           name="take"
-//           id="take"
-//           type="text"
-//           onChange={handleChange}
-//           value={newtake.take}
-//         />
-//         </label>
-//         <label>
-//         Time
-//         <input
-//           name="time"
-//           id="time"
-//           type="text"
-//           onChange={handleChange}
-//           value={newtake.time}
-//         />
-//         </label>
-        
-//         <Timer />
-
-//       <div>
-//         <input type="submit" value="Enter New Take" />
-//       </div>
-      
-//     </form>
-
-
-
-
-
-
-   
-//   )
-// }
-
-
-
-
-// export default TakeForm
-
-
-
 

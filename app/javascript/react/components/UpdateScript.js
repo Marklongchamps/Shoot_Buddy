@@ -92,8 +92,13 @@ const handleSubmit = event => {
   }
 };
 
+const onClickCancel = event => {
+  event.preventDefault()
+  setShouldRedirect(true)
+}
+
 if (shouldRedirect) {debugger
-  return <Redirect to={`/scripts/${shouldRedirect}`} />
+  return <Redirect to={`/scripts`} />
 }
 
 return(
@@ -123,6 +128,11 @@ return(
     <input 
     type="submit"
     value="Update Script"
+    />
+    <input
+    onClick={onClickCancel} className="button"
+    type="button"
+    value="Cancel"
     />
   </form>
     )
