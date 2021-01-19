@@ -36,8 +36,9 @@ ActiveRecord::Schema.define(version: 2020_11_07_153841) do
 
   create_table "takes", force: :cascade do |t|
     t.bigint "shot_id", null: false
-    t.text "take"
+    t.integer "take"
     t.text "time"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shot_id"], name: "index_takes_on_shot_id"

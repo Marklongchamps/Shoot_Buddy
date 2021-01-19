@@ -9,6 +9,7 @@ const SingleShot = (props) => {
  
     const [shot, setShot] = useState([])
     const [take, setTake] = useState([])
+    
 
     const path = props.location.pathname
     const notake = props.match.path
@@ -28,10 +29,11 @@ const SingleShot = (props) => {
   
       })
       .then(response => response.json())
-      .then(body => {
+      .then(body => {debugger
         //set state with current shot name,desc, notes, number id  body.shot.takes is empty array
         setShot([...shot, body.shot])
         setTake(body.shot.takes)
+        
         
 
       })
@@ -99,6 +101,8 @@ const SingleShot = (props) => {
         pathScriptandShot={path}
         alltest={singletake}
         time={singletake.time}
+        //may be wrong 
+        notes={singletake.notes}
        
       />
      

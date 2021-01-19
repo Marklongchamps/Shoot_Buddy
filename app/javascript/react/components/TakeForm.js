@@ -5,7 +5,8 @@ const TakeForm = (props) => {
 
   const [newtake, setNewTake] = useState({
     take: "",
-    time: ""
+    time: "",
+    notes: ""
     })
 
     const [timer, setTimer] = useState(0)
@@ -60,7 +61,7 @@ const TakeForm = (props) => {
   }
   
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => {debugger
     event.preventDefault()
      props.addNewTakeFunction(newtake)
     
@@ -72,7 +73,7 @@ const TakeForm = (props) => {
         <input
           name="take"
           id="take"
-          type="text"
+          type="number"
           onChange={handleChange}
           value={newtake.take}
         />
@@ -85,6 +86,16 @@ const TakeForm = (props) => {
           type="text"
           onChange={handleChange}
           value={newtake.time=formatTime(timer)}
+        />
+        </label>
+        <label>
+        Notes
+        <input
+          name="notes"
+          id="notes"
+          type="text"
+          onChange={handleChange}
+          value={newtake.notes}
         />
         </label>
 
