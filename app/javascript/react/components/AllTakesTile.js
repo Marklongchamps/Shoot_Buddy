@@ -10,8 +10,9 @@ const AllTakesTile = (props) =>{debugger
   return(
     <div>
          <div id="Script tile" className="shot-page-section">
-          <li>take: {props.take}</li>
-          <li>time: {props.time}</li>
+          <li>Take: {props.take}</li>
+          <li>Time: {props.time}</li>
+          <li>Notes: {props.notes}</li>
 
           <br></br>
           <Link to={`${props.pathScriptandShot}/takes/${props.takeid}/destroy`}>
