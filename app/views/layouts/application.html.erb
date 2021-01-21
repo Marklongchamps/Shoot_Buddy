@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
-</div>
+<title>ShootBuddy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<title>ShootBuddy</title>
+
 
   <nav class="top-bar">
     <h1><a href="/">Shoot Buddy</a></h1>
@@ -26,9 +25,10 @@
       </ul>
     </section>
   </nav>
+  
   <br></br>
   <div class="grid-container">
-  <%= yield %>
+ 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
       <%= value %>

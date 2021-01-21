@@ -92,7 +92,8 @@ import Dropzone from "react-dropzone"
     <section>
     <div {...getRootProps()}>
     <input {...getInputProps()} />
-    <button type="button" className="learn more button">CLICK HERE TO ADD A STORY BOARD SHOT TO THE SHOT</button>
+    <p>Drag 'n' drop some files here, or click to select files</p>
+    {/* <button type="button" className="learn more button">CLICK HERE TO ADD A STORY BOARD SHOT TO THE SHOT</button> */}
     </div>
     </section>
     )}

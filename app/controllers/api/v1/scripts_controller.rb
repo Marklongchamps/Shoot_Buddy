@@ -1,5 +1,5 @@
 class Api::V1::ScriptsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   protect_from_forgery unless: -> { request.format.json? }
   def index
     
@@ -40,9 +40,9 @@ class Api::V1::ScriptsController < ApplicationController
   end
 
   def create
-   
+   binding.pry
     new_script = Script.new(script_params)
-  
+    new_script.user = current_user
   
     if new_script.save
       render json: new_script
