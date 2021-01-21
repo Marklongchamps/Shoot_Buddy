@@ -4,4 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   mount_uploader :story_board_photo, StoryBoardPhotoUploader
+
+  has_many :scripts
+
+  validates :email, presence: true
 end
